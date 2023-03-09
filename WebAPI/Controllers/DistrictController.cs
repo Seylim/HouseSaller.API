@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "DISTRICT.ADD")]
         [HttpPost("add")]
         public async Task<IActionResult> AddDistrict([FromBody] AddDistrictRequest request)
         {
@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "DISTRICT.UPDATE")]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateDistrict([FromBody] UpdateDistrictRequest request)
         {
@@ -48,6 +48,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getalldistricts")]
         public async Task<IActionResult> GetAllDistricts()
         {
@@ -63,6 +64,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getdistrictbyid")]
         public async Task<IActionResult> GetDistrictById([FromQuery] int id)
         {
@@ -78,6 +80,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getdistrictbyname")]
         public async Task<IActionResult> GetDistrictByName([FromQuery] string name)
         {
@@ -93,6 +96,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getdistrictbycityid")]
         public async Task<IActionResult> GetDistrictByCityId([FromQuery] int cityId)
         {
@@ -108,6 +112,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getparentdistrictbydistrictid")]
         public async Task<IActionResult> GetParentDistrictByDistrictId([FromQuery] int districtId)
         {
@@ -123,6 +128,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getsubdistrictsbydistrictid")]
         public async Task<IActionResult> GetSubDistrictsByDistrictId([FromQuery] int districtId)
         {

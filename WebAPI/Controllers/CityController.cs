@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "CITY.ADD")]
         [HttpPost("add")]
         public async Task<IActionResult> AddCity(AddCityRequest request)
         {
@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "CITY.UPDATE")]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateCity(UpdateCityRequest request)
         {
@@ -47,6 +47,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getallcities")]
         public async Task<IActionResult> GetAllCities()
         {
@@ -61,6 +62,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getcitybyid")]
         public async Task<IActionResult> GetCityById([FromQuery] int id)
         {
@@ -76,6 +78,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getcitybyname")]
         public async Task<IActionResult> GetCityByName([FromQuery] string name)
         {

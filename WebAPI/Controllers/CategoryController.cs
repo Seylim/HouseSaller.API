@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "CATEGROY.ADD")]
         [HttpPost("add")]
         public async Task<IActionResult> AddCategory([FromBody] AddCategoryRequest request)
         {
@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "CATEGORY.DELETE")]
         [HttpPut("delete")]
         public async Task<IActionResult> DeleteCategory([FromQuery] int id)
         {
@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "CATEGORY.UPDATE")]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryRequest request)
         {
@@ -62,6 +62,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getallcategories")]
         public async Task<IActionResult> GetAllCategories()
         {
@@ -76,7 +77,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
         [HttpGet("gettcategorybyid")]
         public async Task<IActionResult> GetCategoryById([FromQuery] int id)
         {
@@ -92,6 +93,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getactivecategories")]
         public async Task<IActionResult> GetActiveCtegories()
         {
@@ -106,6 +108,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getsubcategoriesbycategoryid")]
         public async Task<IActionResult> GetSubCategoriesByCategoryId([FromQuery] int id)
         {
@@ -121,6 +124,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getparentcategorybycategoryid")]
         public async Task<IActionResult> GetParentCategoryByCategoryId([FromQuery] int id)
         {

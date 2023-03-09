@@ -8,7 +8,6 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin,Member")]
     public class AddressController : ControllerBase
     {
         private readonly IAddressService _service;
@@ -17,7 +16,7 @@ namespace WebAPI.Controllers
         {
             _service = service;
         }
-
+        [Authorize(Roles = "ADDRESS.ADD")]
         [HttpPost("add")]
         public async Task<IActionResult> AddAddress([FromBody] AddAddressRequest request)
         {
@@ -32,6 +31,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "ADDRESS.DELETE")]
         [HttpPut("delete")]
         public async Task<IActionResult> DeleteAddress([FromQuery] int id)
         {
@@ -47,6 +47,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "ADDRESS.UPDATE")]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateAddress([FromBody] UpdateAddressRequest request)
         {
@@ -61,6 +62,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getalladdresses")]
         public async Task<IActionResult> GetAllAddresses()
         {
@@ -75,6 +77,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getaddressbyid")]
         public async Task<IActionResult> GetAddresses([FromQuery] int id)
         {
@@ -90,6 +93,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getactiveaddresses")]
         public async Task<IActionResult> GetActiveAddresses()
         {

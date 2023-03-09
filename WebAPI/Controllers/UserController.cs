@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Admin,Member")]
+        [Authorize(Roles = "USER.DELETE")]
         [HttpPut("delete")]
         public async Task<ActionResult> Delete([FromQuery] UserIdRequest request)
         {
@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "USER.GETALL")]
         [HttpGet("getallusers")]
         public async Task<IActionResult> GetAllUsers()
         {
@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "USER.GETBYID")]
         [HttpGet("getuserbyid")]
         public async Task<IActionResult> GetUserById([FromQuery] UserIdRequest request) 
         {
@@ -62,7 +62,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin,Member")]
+        [Authorize(Roles = "USER.UPDATE")]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest request)
         {

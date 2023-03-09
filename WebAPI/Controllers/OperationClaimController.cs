@@ -8,7 +8,6 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
     public class OperationClaimController : ControllerBase
     {
         private readonly IOperationClaimService _service;
@@ -18,6 +17,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
+        [Authorize(Roles = "OPERATIONCLAIM.ADD")]
         [HttpPost("add")]
         public async Task<IActionResult> AddOperationClaim([FromBody] AddOperationClaimRequest request)
         {
@@ -32,6 +32,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "OPERATIONCLAIM.DELETE")]
         [HttpDelete("delete")]
         public async Task<IActionResult> DeleteOperationClaim([FromQuery] OperationClaimIdRequest request)
         {
@@ -46,6 +47,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "OPERATIONCLAIM.GETALL")]
         [HttpGet("getalloperationclaims")]
         public async Task<IActionResult> GetAllOperationClaims()
         {
@@ -60,6 +62,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "OPERATIONCLAIM.GETBYID")]
         [HttpGet("getalloperationclaimbyid")]
         public async Task<IActionResult> GetAllOperationClaimById([FromQuery] OperationClaimIdRequest request)
         {
@@ -74,6 +77,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "OPERATIONCLAIM.UPDATE")]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateOperationClaim([FromBody] UpdateOperationClaimRequest request)
         {

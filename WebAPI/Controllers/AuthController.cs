@@ -16,6 +16,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
+        [AllowAnonymous]
         [HttpPost("/login")]
         public async Task<ActionResult> Login(UserForLoginDto userForLoginDto)
         {
@@ -34,6 +35,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        [AllowAnonymous]
         [HttpPost("/register")]
         public async Task<ActionResult> Register(UserForRegisterDto userForRegisterDto)
         {

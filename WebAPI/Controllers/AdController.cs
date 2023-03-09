@@ -9,7 +9,6 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin,Member,Client")]
     public class AdController : ControllerBase
     {
         private readonly IAdService _service;
@@ -18,7 +17,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Admin,Member")]
+        [Authorize(Roles = "AD.ADD")]
         [HttpPost("add")]
         public async Task<IActionResult> AddAd([FromBody] AddAdRequest request)
         {
@@ -33,7 +32,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin,Member")]
+        [Authorize(Roles = "AD.DELETE")]
         [HttpPut("delete")]
         public async Task<IActionResult> DeleteAd([FromQuery] int id)
         {
@@ -49,7 +48,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin,Member")]
+        [Authorize(Roles = "AD.UPDATE")]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateAd([FromBody] UpdateAdRequest request)
         {
@@ -64,6 +63,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getallads")]
         public async Task<IActionResult> GetAllAds()
         {
@@ -78,6 +78,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getadbyid")]
         public async Task<IActionResult> GetAdById([FromQuery] int id)
         {
@@ -93,6 +94,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getactiveads")]
         public async Task<IActionResult> GetActiveAds()
         {
@@ -107,6 +109,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("getadsbycategoryid")]
         public async Task<IActionResult> GetAdsByCategoryId([FromQuery] int categoryId)
         {

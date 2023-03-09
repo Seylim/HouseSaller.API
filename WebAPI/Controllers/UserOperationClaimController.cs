@@ -8,7 +8,6 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
     public class UserOperationClaimController : ControllerBase
     {
         private readonly IUserOperationClaimService _service;
@@ -18,6 +17,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
+        [Authorize(Roles = "USEROPERATIONCLAIM.ADD")]
         [HttpPost("add")]
         public async Task<IActionResult> AddUserOperationClaim([FromBody] AddUserOperationClaimRequest request)
         {
@@ -32,6 +32,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "USEROPERATIONCLAIM.DELETE")]
         [HttpDelete("delete")]
         public async Task<IActionResult> DeleteUserOperationClaim([FromQuery] UserOperationClaimIdRequest request)
         {
@@ -46,6 +47,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "USEROPERATIONCLAIM.GETALL")]
         [HttpGet("getalluseroperationclaims")]
         public async Task<IActionResult> GetAllUserOperationClaims()
         {
@@ -60,6 +62,7 @@ namespace WebAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "USEROPERATIONCLAIM.GETBYID")]
         [HttpGet("getalluseroperationclaimbyid")]
         public async Task<IActionResult> GetAllUserOperationClaimById([FromQuery] UserOperationClaimIdRequest request)
         {

@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
             _service = service;
         }
 
-        [Authorize(Roles = "Admin,Member")]
+        [Authorize(Roles = "PHOTO.ADD")]
         [HttpPost("add")]
         public async Task<IActionResult> AddPhoto([FromQuery] AdIdRequest adIdRequest, IFormFile file, string description)
         {
@@ -34,7 +34,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin,Member,Client")]
+        [AllowAnonymous]
         [HttpGet("getphotobyadid")]
         public async Task<IActionResult> GetPhotoById(PhotoIdRequest request)
         {
