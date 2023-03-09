@@ -10,5 +10,6 @@ namespace DataAccess.Abstracts.Repositories
 {
     public interface IOperationClaimRepository : IBaseRepository<OperationClaim>, IAsyncBaseRepository<OperationClaim>
     {
+        Task<OperationClaim> GetOperationClaimByName(string name);
     }
 }

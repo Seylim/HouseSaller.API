@@ -71,6 +71,12 @@ namespace DataAccess.Concretes.EfRepositories
             return operationClaim;
         }
 
+        public async Task<OperationClaim> GetOperationClaimByName(string name)
+        {
+            var operationClaim = await _context.OperationClaims.Where(oc => oc.Name == name).Include(oc => oc.UserOperationClaims).FirstOrDefaultAsync();
+            return operationClaim;
+        }
+
         public OperationClaim Update(OperationClaim entity)
         {
             _context.OperationClaims.Update(entity);

@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results;
+using Entities.Concretes;
 using Entities.Dtos.Requests.OperationClaimDtos;
 using Entities.Dtos.Responses.OperationClaimDtos;
 using System;
@@ -16,5 +17,6 @@ namespace Business.Abstracts
         Task<IResult> DeleteOperationClaim(OperationClaimIdRequest request);
         Task<IDataResult<IList<GetAllOperationClaimsResponse>>> GetAllOperationClaims();
         Task<IDataResult<GetOperationClaimByIdResponse>> GetOperationClaimById(OperationClaimIdRequest request);
+        Task<OperationClaim> GetOperationClaimByName(string name);
     }
 }

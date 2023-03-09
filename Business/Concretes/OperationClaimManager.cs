@@ -62,6 +62,11 @@ namespace Business.Concretes
             return new SuccessDataResult<GetOperationClaimByIdResponse>(gettedOperationClaim);
         }
 
+        public async Task<OperationClaim> GetOperationClaimByName(string name)
+        {
+            return await _repository.GetOperationClaimByName(name);
+        }
+
         public async Task<IDataResult<GetOperationClaimByIdResponse>> UpdateOperationClaim(UpdateOperationClaimRequest request)
         {
 
